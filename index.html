@@ -1,437 +1,606 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AURA ATELIER | Haute Lunetterie & Eyewear Couture</title>
+  <title>JENELLE | Luxury Eyewear</title>
   
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Cormorant Garamond & Plus Jakarta Sans -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Phosphor Icons for high-fashion minimal aesthetic icons -->
-  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            serif: ['"Cormorant Garamond"', 'serif'],
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-          },
-          colors: {
-            luxury: {
-              black: '#0a0a0a',
-              dark: '#121212',
-              card: '#181818',
-              border: '#272727',
-              gold: '#D4AF37',
-              champagne: '#E6D5B8',
-              muted: '#8E8E93',
-              light: '#FAFAFA'
-            }
-          },
-          letterSpacing: {
-            widest: '0.25em',
-            ultra: '0.35em'
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
-    /* Custom luxury styling refinements */
-    ::selection {
-      background-color: #D4AF37;
-      color: #000000;
-    }
-    
-    /* Subtle custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #0a0a0a;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #2a2a2a;
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #D4AF37;
+    :root {
+      --bg: #0b0b0d;
+      --surface: #141418;
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --gold: #d4af37;
+      --gold-light: #f5e7a9;
+      --text: #f0f0f2;
+      --text-muted: #8e8e99;
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .glass-nav {
-      background: rgba(10, 10, 10, 0.78);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .glass-card {
-      background: rgba(22, 22, 22, 0.65);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    .glass-modal {
-      background: rgba(14, 14, 14, 0.94);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-    }
-
-    .editorial-badge {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
+    /* Top Utility Notice */
+    .top-bar {
+      background: #000;
+      border-bottom: 1px solid var(--surface-border);
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 11, 13, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--surface-border);
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+    }
+
+    .brand-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .brand-logo-wrap img {
+      height: 42px;
+      width: 42px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+    }
+
+    .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .bag-btn {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .bag-badge {
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background: var(--gold);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border-radius: 50%;
+      height: 18px;
+      width: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+      padding: 60px 24px;
+    }
+
+    .hero-video-bg {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      opacity: 0.28;
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      line-height: 1.05;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 580px;
+      margin: 0 auto 36px;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 34px;
+      background: var(--gold);
+      color: #000;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      border: 1px solid var(--gold);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-gold:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    /* Product Section */
+    .section-wrap {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 100px 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 36px;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      border-color: rgba(212, 175, 55, 0.4);
+      transform: translateY(-4px);
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 440px;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      cursor: pointer;
+    }
+
+    .video-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(8px);
+      padding: 4px 10px;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--surface-border);
+      color: #fff;
+    }
+
+    .card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-name {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+
+    .product-details {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 16px;
+    }
+
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--surface-border);
+    }
+
+    .product-price {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .btn-add {
+      background: transparent;
+      border: 1px solid var(--surface-border);
+      color: var(--text);
+      padding: 10px 18px;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-add:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #000;
+    }
+
+    /* Cart Drawer */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 100%;
+      max-width: 400px;
+      height: 100vh;
+      background: #111115;
+      border-left: 1px solid var(--surface-border);
+      box-shadow: -10px 0 40px rgba(0, 0, 0, 0.7);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cart-drawer.active {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 24px;
+      border-bottom: 1px solid var(--surface-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .cart-title {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+    }
+
+    .close-cart {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .cart-item-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .cart-item-price {
+      font-size: 0.85rem;
+      color: var(--gold);
+    }
+
+    .cart-remove {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+
+    .cart-footer {
+      padding: 24px;
+      border-top: 1px solid var(--surface-border);
+    }
+
+    .cart-total-wrap {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .cart-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 150;
+    }
+
+    .cart-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--surface-border);
+      padding: 60px 24px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .footer-logo {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+      margin-bottom: 16px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      .video-container {
+        height: 360px;
+      }
     }
   </style>
 </head>
-<body class="bg-luxury-black text-luxury-light font-sans antialiased overflow-x-hidden selection:bg-luxury-gold selection:text-black">
+<body>
 
-  <!-- Top Announcement Bar -->
-  <div class="bg-luxury-dark border-b border-luxury-border py-2 text-center text-xs tracking-widest text-neutral-400 flex items-center justify-center space-x-6 px-4">
-    <span class="flex items-center gap-2">
-      <span class="w-1.5 h-1.5 rounded-full bg-luxury-gold inline-block animate-ping"></span>
-      SPRING/SUMMER CAMPAIGN: PRIVATE PREVIEW OPEN
-    </span>
-    <span class="hidden md:inline text-neutral-600">|</span>
-    <span class="hidden md:inline text-neutral-400">COMPLIMENTARY WORLDWIDE COURIER & BESPOKE FITTING</span>
+  <!-- Top Announcement -->
+  <div class="top-bar">
+    Complimentary Nationwide Delivery Across Nigeria on Orders Over ₦150,000
   </div>
 
-  <!-- Sticky Luxury Navigation -->
-  <nav id="main-nav" class="sticky top-0 z-40 w-full glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
-      
-      <!-- Mobile Menu Toggle Button -->
-      <button id="mobile-menu-btn" class="md:hidden text-2xl text-luxury-light hover:text-luxury-gold transition-colors focus:outline-none" aria-label="Toggle Navigation">
-        <i class="ph ph-list"></i>
-      </button>
-
-      <!-- Brand Identity / Monogram -->
-      <a href="#" class="flex flex-col items-center group">
-        <span class="font-serif text-2xl md:text-3xl font-light tracking-[0.3em] uppercase text-luxury-light group-hover:text-luxury-gold transition-colors duration-300">
-          AURA
-        </span>
-        <span class="text-[9px] tracking-ultra text-luxury-gold font-light uppercase">
-          ATELIER PARIS
-        </span>
+  <!-- Main Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-logo-wrap">
+        <img src="Logo.jpeg" alt="Jenelle Logo" onerror="this.style.display='none'" />
+        <span class="brand-name">JENELLE</span>
       </a>
 
-      <!-- Desktop Links -->
-      <div class="hidden md:flex items-center space-x-9 text-xs tracking-widest uppercase font-light text-neutral-300">
-        <a href="#collection" class="hover:text-luxury-gold transition-colors duration-200">Collection</a>
-        <a href="#campaign" class="hover:text-luxury-gold transition-colors duration-200">Campaign Films</a>
-        <a href="#try-on" class="hover:text-luxury-gold transition-colors duration-200">Virtual Stylist</a>
-        <a href="#lookbook" class="hover:text-luxury-gold transition-colors duration-200">Lookbook</a>
-        <a href="#craft" class="hover:text-luxury-gold transition-colors duration-200">Craftsmanship</a>
-        <a href="#contact" class="hover:text-luxury-gold transition-colors duration-200">Bespoke</a>
-      </div>
+      <ul class="nav-links">
+        <li><a href="#collection">Collection</a></li>
+        <li><a href="#story">Atelier</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
 
-      <!-- Action Utilities -->
-      <div class="flex items-center space-x-6 text-xl">
-        <button id="search-trigger" class="text-neutral-400 hover:text-luxury-gold transition-colors" title="Search catalog">
-          <i class="ph ph-magnifying-glass"></i>
+      <div class="nav-actions">
+        <button class="bag-btn" id="openBagBtn" aria-label="View shopping bag">
+          <i data-lucide="shopping-bag"></i>
+          <span class="bag-badge" id="bagCount">0</span>
         </button>
-        <button id="bag-btn" class="relative text-neutral-300 hover:text-luxury-gold transition-colors" title="Shopping Bag">
-          <i class="ph ph-handbag"></i>
-          <span id="bag-count" class="absolute -top-1.5 -right-2.5 bg-luxury-gold text-black text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">0</span>
-        </button>
-      </div>
-
-    </div>
-
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden md:hidden bg-luxury-dark border-b border-luxury-border px-8 py-6 flex flex-col space-y-4 text-xs tracking-widest uppercase">
-      <a href="#collection" class="mobile-nav-link text-neutral-300 hover:text-luxury-gold">Collection</a>
-      <a href="#campaign" class="mobile-nav-link text-neutral-300 hover:text-luxury-gold">Campaign Films</a>
-      <a href="#try-on" class="mobile-nav-link text-neutral-300 hover:text-luxury-gold">Virtual Stylist</a>
-      <a href="#lookbook" class="mobile-nav-link text-neutral-300 hover:text-luxury-gold">Lookbook</a>
-      <a href="#craft" class="mobile-nav-link text-neutral-300 hover:text-luxury-gold">Craftsmanship</a>
-      <a href="#contact" class="mobile-nav-link text-neutral-300 hover:text-luxury-gold">Bespoke Services</a>
-    </div>
-  </nav>
-
-  <!-- Hero Section with Background Video Atmosphere -->
-  <header class="relative w-full h-[92vh] min-h-[640px] flex items-center justify-center overflow-hidden">
-    <!-- Atmospheric Background Video -->
-    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover opacity-35 scale-105 transition-transform duration-1000 ease-out" poster="https://images.unsplash.com/photo-1509695503492-413833d296ae?q=80&w=1800&auto=format&fit=crop">
-      <!-- High-res royalty free video snippet -->
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-a-studio-setting-41484-large.mp4" type="video/mp4" />
-    </video>
-
-    <!-- Tint Gradients -->
-    <div class="absolute inset-0 bg-gradient-to-t from-luxury-black via-luxury-black/50 to-transparent"></div>
-    <div class="absolute inset-0 bg-radial-gradient pointer-events-none opacity-40"></div>
-
-    <!-- Hero Content -->
-    <div class="relative z-10 max-w-5xl mx-auto text-center px-6 pt-12 flex flex-col items-center">
-      <p class="text-luxury-gold text-xs tracking-widest uppercase font-medium mb-4 flex items-center gap-2">
-        <span class="w-8 h-px bg-luxury-gold/60"></span>
-        Haute Eyewear Edition 2026
-        <span class="w-8 h-px bg-luxury-gold/60"></span>
-      </p>
-
-      <h1 class="font-serif text-5xl sm:text-6xl md:text-8xl font-light tracking-tight leading-[1.05] mb-6 text-luxury-light">
-        Sculpted Radiance. <br />
-        <span class="italic font-normal text-luxury-champagne">Defined Vision.</span>
-      </h1>
-
-      <p class="max-w-xl text-neutral-400 text-sm md:text-base font-light tracking-wide leading-relaxed mb-10">
-        Engineered with grade-9 Japanese aerospace titanium and hand-polished bio-acetates. Crafted for those who perceive eyewear as personal sculpture.
-      </p>
-
-      <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-        <a href="#collection" class="w-full sm:w-auto px-8 py-3.5 bg-luxury-light text-black text-xs uppercase tracking-widest hover:bg-luxury-gold transition-colors duration-300 text-center font-medium rounded-sm shadow-xl">
-          Explore Collection
-        </a>
-        <button onclick="openVideoModal('https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?autoplay=1', 'Campaign 2026: The Architecture of Light')" class="w-full sm:w-auto px-8 py-3.5 border border-white/20 hover:border-luxury-gold text-luxury-light hover:text-luxury-gold transition-all duration-300 text-xs uppercase tracking-widest flex items-center justify-center gap-2 rounded-sm glass-card">
-          <i class="ph ph-play text-base"></i>
-          Watch Campaign Film
-        </button>
-      </div>
-
-      <!-- Scroll Indicator -->
-      <div class="mt-16 flex flex-col items-center gap-2 opacity-70 animate-bounce">
-        <span class="text-[10px] tracking-widest text-neutral-400 uppercase font-light">Scroll to discover</span>
-        <i class="ph ph-arrow-down text-luxury-gold text-sm"></i>
       </div>
     </div>
   </header>
 
-  <!-- Featured Glasses Collection -->
-  <section id="collection" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-luxury-border pb-8">
-      <div>
-        <span class="text-xs uppercase tracking-widest text-luxury-gold font-light">The Atelier Portfolio</span>
-        <h2 class="font-serif text-4xl md:text-5xl font-light text-luxury-light mt-1">Curated Silhouettes</h2>
-      </div>
-
-      <!-- Filter Tabs -->
-      <div class="flex flex-wrap gap-2 mt-6 md:mt-0">
-        <button class="filter-btn active px-4 py-2 text-xs uppercase tracking-widest rounded-full transition-all border border-luxury-gold bg-luxury-gold text-black font-medium" data-category="all">
-          All Frames
-        </button>
-        <button class="filter-btn px-4 py-2 text-xs uppercase tracking-widest rounded-full transition-all border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600" data-category="sunglasses">
-          Sun Couture
-        </button>
-        <button class="filter-btn px-4 py-2 text-xs uppercase tracking-widest rounded-full transition-all border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600" data-category="optical">
-          Optical Precision
-        </button>
-        <button class="filter-btn px-4 py-2 text-xs uppercase tracking-widest rounded-full transition-all border border-neutral-800 text-neutral-400 hover:text-white hover:border-neutral-600" data-category="limited">
-          Limited Run
-        </button>
-      </div>
-    </div>
-
-    <!-- Product Grid Container -->
-    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Products dynamically injected via JavaScript for interactivity -->
+  <!-- Hero with Background Video -->
+  <section class="hero">
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="sample1.mp4" type="video/mp4">
+    </video>
+    
+    <div class="hero-content">
+      <span class="hero-tag">The Haute Lunetterie Edition</span>
+      <h1 class="hero-title">Refined Vision.<br>Timeless Allure.</h1>
+      <p class="hero-desc">Experience artisanal eyewear designed to sculpt your presence. Crafted for modern aesthetics and pure precision.</p>
+      <a href="#collection" class="btn-gold">Explore Collection <i data-lucide="arrow-down" style="width:16px;height:16px;"></i></a>
     </div>
   </section>
 
-  <!-- Interactive Virtual Style & Try-On Silhouette Previewer -->
-  <section id="try-on" class="py-20 bg-luxury-dark border-y border-luxury-border relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-      <div class="text-center max-w-2xl mx-auto mb-14">
-        <span class="text-xs uppercase tracking-widest text-luxury-gold font-light">Virtual Studio Experience</span>
-        <h2 class="font-serif text-4xl md:text-5xl font-light text-luxury-light mt-2">Bespoke Fit & Face Silhouette Guide</h2>
-        <p class="text-neutral-400 text-sm mt-3 font-light">
-          Simulate frame geometry on diverse silhouette structures. Switch frames and explore recommended matches for your facial structure.
-        </p>
-      </div>
+  <!-- Product Showcase Section (All in Video) -->
+  <section class="section-wrap" id="collection">
+    <div class="section-header">
+      <p class="section-eyebrow">Visual Gallery</p>
+      <h2 class="section-title">The Video Showcase</h2>
+    </div>
 
-      <div class="glass-card rounded-2xl p-6 md:p-10 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-        
-        <!-- Interactive Model Silhouette Canvas/Preview -->
-        <div class="lg:col-span-7 relative flex flex-col items-center justify-center min-h-[420px] bg-black/60 rounded-xl p-8 border border-white/5 overflow-hidden">
-          
-          <div class="absolute top-4 left-4 z-20 flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span id="active-silhouette-label" class="text-[11px] tracking-widest uppercase text-neutral-400">Model: Oval Profile</span>
-          </div>
-
-          <!-- Face Preview Silhouette Wrapper -->
-          <div class="relative w-64 h-80 sm:w-72 sm:h-96 flex items-center justify-center transition-all duration-500" id="face-silhouette-container">
-            <!-- Dynamic Silhouette Graphic -->
-            <img id="face-model-img" 
-                 src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=700&auto=format&fit=crop" 
-                 alt="Portrait for style trial" 
-                 class="w-full h-full object-cover rounded-2xl filter grayscale contrast-125 opacity-75 shadow-2xl transition-all duration-700" />
-
-            <!-- Eyewear Virtual Frame Overlay -->
-            <div id="virtual-glasses-layer" class="absolute top-[34%] w-[68%] transition-all duration-500 transform hover:scale-105 drop-shadow-[0_15px_15px_rgba(0,0,0,0.9)] cursor-grab">
-              <svg id="glasses-svg" viewBox="0 0 240 80" class="w-full h-auto text-luxury-gold transition-all duration-300">
-                <!-- Frame paths change dynamically -->
-                <path id="svg-frame-bridge" d="M105,38 Q120,28 135,38" stroke="currentColor" stroke-width="4" fill="none" />
-                <path id="svg-lens-left" d="M35,28 C50,20 95,20 105,38 C115,55 90,75 48,68 C25,64 20,40 35,28 Z" fill="rgba(10,10,10,0.85)" stroke="currentColor" stroke-width="4" />
-                <path id="svg-lens-right" d="M205,28 C190,20 145,20 135,38 C125,55 150,75 192,68 C215,64 220,40 205,28 Z" fill="rgba(10,10,10,0.85)" stroke="currentColor" stroke-width="4" />
-                <path id="svg-arm-left" d="M25,32 L5,30" stroke="currentColor" stroke-width="3" />
-                <path id="svg-arm-right" d="M215,32 L235,30" stroke="currentColor" stroke-width="3" />
-              </svg>
-            </div>
-          </div>
-
-          <p class="text-xs text-neutral-500 mt-4 tracking-widest uppercase">Live Vector Proportions · Precision 1:1 Scale</p>
+    <div class="video-grid">
+      
+      <!-- Model 1: sample1.mp4 -->
+      <div class="product-card">
+        <div class="video-container">
+          <video autoplay muted loop playsinline>
+            <source src="sample1.mp4" type="video/mp4">
+          </video>
+          <span class="video-badge">Motion 01</span>
         </div>
-
-        <!-- Try-On Controls -->
-        <div class="lg:col-span-5 flex flex-col justify-between space-y-6">
-          <div>
-            <span class="text-xs uppercase tracking-widest text-luxury-gold">1. Select Face Archetype</span>
-            <div class="grid grid-cols-3 gap-2 mt-3">
-              <button onclick="setFaceShape('oval', 'Oval / Balanced', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=700&auto=format&fit=crop')" class="shape-btn active p-3 text-center rounded-lg border border-luxury-gold bg-luxury-gold/10 text-xs text-neutral-200 hover:border-luxury-gold transition">
-                <i class="ph ph-circle text-lg block mb-1 text-luxury-gold"></i>
-                Oval
-              </button>
-              <button onclick="setFaceShape('square', 'Square / Angular', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=700&auto=format&fit=crop')" class="shape-btn p-3 text-center rounded-lg border border-neutral-800 text-xs text-neutral-400 hover:border-neutral-600 transition">
-                <i class="ph ph-square text-lg block mb-1 text-neutral-400"></i>
-                Square
-              </button>
-              <button onclick="setFaceShape('heart', 'Heart / Diamond', 'https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=700&auto=format&fit=crop')" class="shape-btn p-3 text-center rounded-lg border border-neutral-800 text-xs text-neutral-400 hover:border-neutral-600 transition">
-                <i class="ph ph-diamond text-lg block mb-1 text-neutral-400"></i>
-                Diamond
-              </button>
-            </div>
-          </div>
-
-          <div>
-            <span class="text-xs uppercase tracking-widest text-luxury-gold">2. Choose Silhouette Style</span>
-            <div class="grid grid-cols-2 gap-3 mt-3">
-              <button onclick="setGlassesStyle('aviator', 'THE NOCTURNE AVIATOR')" class="style-select-btn active text-left p-3 rounded-lg border border-luxury-gold bg-white/5 transition flex items-center justify-between">
-                <div>
-                  <div class="text-xs font-medium text-white">The Aviator</div>
-                  <div class="text-[10px] text-neutral-400">Aerospace Titanium</div>
-                </div>
-                <i class="ph ph-check-circle text-luxury-gold text-lg"></i>
-              </button>
-
-              <button onclick="setGlassesStyle('geometric', 'THE MONOLITH OBLONG')" class="style-select-btn text-left p-3 rounded-lg border border-neutral-800 text-neutral-300 hover:border-neutral-600 transition flex items-center justify-between">
-                <div>
-                  <div class="text-xs font-medium text-white">The Monolith</div>
-                  <div class="text-[10px] text-neutral-400">Black Onyx Acetate</div>
-                </div>
-                <i class="ph ph-circle text-neutral-600 text-lg"></i>
-              </button>
-
-              <button onclick="setGlassesStyle('round', 'THE VERONA ARCHITECT')" class="style-select-btn text-left p-3 rounded-lg border border-neutral-800 text-neutral-300 hover:border-neutral-600 transition flex items-center justify-between">
-                <div>
-                  <div class="text-xs font-medium text-white">The Verona Round</div>
-                  <div class="text-[10px] text-neutral-400">Champagne Gold Wire</div>
-                </div>
-                <i class="ph ph-circle text-neutral-600 text-lg"></i>
-              </button>
-
-              <button onclick="setGlassesStyle('cateye', 'THE SÉRAPHINE CAT-EYE')" class="style-select-btn text-left p-3 rounded-lg border border-neutral-800 text-neutral-300 hover:border-neutral-600 transition flex items-center justify-between">
-                <div>
-                  <div class="text-xs font-medium text-white">The Séraphine</div>
-                  <div class="text-[10px] text-neutral-400">Sculpted Tortoise</div>
-                </div>
-                <i class="ph ph-circle text-neutral-600 text-lg"></i>
-              </button>
-            </div>
-          </div>
-
-          <!-- Color tint selector for simulation -->
-          <div>
-            <span class="text-xs uppercase tracking-widest text-luxury-gold">3. Lens Tint & Finish</span>
-            <div class="flex items-center space-x-3 mt-2">
-              <button onclick="setLensTint('#D4AF37', 'rgba(212,175,55,0.25)')" class="w-8 h-8 rounded-full bg-[#D4AF37] border-2 border-white/60 focus:ring-2 focus:ring-luxury-gold" title="Amber Gold"></button>
-              <button onclick="setLensTint('#1a1a1a', 'rgba(10,10,10,0.85)')" class="w-8 h-8 rounded-full bg-[#1a1a1a] border border-neutral-700 focus:ring-2 focus:ring-luxury-gold" title="Noir Blackout"></button>
-              <button onclick="setLensTint('#2a4365', 'rgba(42,67,101,0.5)')" class="w-8 h-8 rounded-full bg-[#2a4365] border border-neutral-700 focus:ring-2 focus:ring-luxury-gold" title="Aegean Indigo"></button>
-              <button onclick="setLensTint('#4a3728', 'rgba(74,55,40,0.55)')" class="w-8 h-8 rounded-full bg-[#4a3728] border border-neutral-700 focus:ring-2 focus:ring-luxury-gold" title="Havana Brown"></button>
-            </div>
-          </div>
-
-          <div class="pt-2">
-            <button onclick="inquireActiveStyle()" class="w-full py-3 bg-luxury-gold text-black uppercase tracking-widest text-xs font-semibold rounded hover:bg-white transition duration-300">
-              Inquire Bespoke Fitting For This Style
+        <div class="card-body">
+          <h3 class="product-name">Jenelle Noir Sovereign</h3>
+          <p class="product-details">Hand-polished Italian black acetate with custom gold hinges and UV400 protective lenses.</p>
+          <div class="product-footer">
+            <span class="product-price">₦85,000</span>
+            <button class="btn-add" onclick="addToBag('Jenelle Noir Sovereign', 85000)">
+              <i data-lucide="plus" style="width:14px;height:14px;"></i> Add to Bag
             </button>
           </div>
         </div>
-
       </div>
-    </div>
-  </section>
 
-  <!-- Campaign Cinema & High Fashion Motion Lookbook -->
-  <section id="campaign" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
-      <div>
-        <span class="text-xs uppercase tracking-widest text-luxury-gold font-light">Cinematography & Runway</span>
-        <h2 class="font-serif text-4xl md:text-5xl font-light text-luxury-light mt-1">Movement in Focus</h2>
-      </div>
-      <p class="text-neutral-400 text-xs md:text-sm max-w-md mt-4 md:mt-0 font-light">
-        Witness how our lenses reflect ambient architecture and contour the jawline across natural and stage lighting.
-      </p>
-    </div>
-
-    <!-- Video Showcase Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      
-      <!-- Video Card 1 -->
-      <div class="group relative rounded-xl overflow-hidden glass-card cursor-pointer border border-white/10" onclick="openVideoModal('https://www.youtube-nocookie.com/embed/ScMzIvxBSi4?autoplay=1', 'Episode I: Reflections in Kyoto (Titanium Craft)')">
-        <div class="relative aspect-[9/14] md:aspect-[4/5] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=900&auto=format&fit=crop" alt="Kyoto Campaign" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-          
-          <!-- Play Icon Pill -->
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-14 h-14 rounded-full bg-black/60 border border-luxury-gold/50 flex items-center justify-center text-luxury-gold group-hover:scale-110 group-hover:bg-luxury-gold group-hover:text-black transition duration-300">
-              <i class="ph ph-play-fill text-xl ml-1"></i>
-            </div>
-          </div>
-
-          <div class="absolute bottom-6 left-6 right-6">
-            <span class="editorial-badge text-luxury-gold font-semibold">Short Film · 01:24</span>
-            <h3 class="font-serif text-2xl text-white mt-1">Reflections in Kyoto</h3>
-            <p class="text-neutral-400 text-xs mt-1">Titanium temple forging process</p>
+      <!-- Model 2: sample2.mp4 -->
+      <div class="product-card">
+        <div class="video-container">
+          <video autoplay muted loop playsinline>
+            <source src="sample2.mp4" type="video/mp4">
+          </video>
+          <span class="video-badge">Motion 02</span>
+        </div>
+        <div class="card-body">
+          <h3 class="product-name">Jenelle Aureate Horizon</h3>
+          <p class="product-details">Ultralight titanium rim aviator framed with subtle champagne tint and gradient tone lenses.</p>
+          <div class="product-footer">
+            <span class="product-price">₦95,000</span>
+            <button class="btn-add" onclick="addToBag('Jenelle Aureate Horizon', 95000)">
+              <i data-lucide="plus" style="width:14px;height:14px;"></i> Add to Bag
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Video Card 2 (Featured Wide) -->
-      <div class="group relative rounded-xl overflow-hidden glass-card cursor-pointer border border-white/10" onclick="openVideoModal('https://www.youtube-nocookie.com/embed/L_LUpnjgPso?autoplay=1', 'Episode II: The Milanese Sun (Summer Couture)')">
-        <div class="relative aspect-[9/14] md:aspect-[4/5] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=900&auto=format&fit=crop" alt="Milan Runway Campaign" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-          
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-14 h-14 rounded-full bg-black/60 border border-luxury-gold/50 flex items-center justify-center text-luxury-gold group-hover:scale-110 group-hover:bg-luxury-gold group-hover:text-black transition duration-300">
-              <i class="ph ph-play-fill text-xl ml-1"></i>
-            </div>
-          </div>
-
-          <div class="absolute bottom-6 left-6 right-6">
-            <span class="editorial-badge text-luxury-gold font-semibold">Runway Session · 02:10</span>
-            <h3 class="font-serif text-2xl text-white mt-1">The Milanese Sun</h3>
-            <p class="text-neutral-400 text-xs mt-1">High-contrast polarizing lenses on the catwalk</p>
-          </div>
+      <!-- Model 3: sample3.mp4 -->
+      <div class="product-card">
+        <div class="video-container">
+          <video autoplay muted loop playsinline>
+            <source src="sample3.mp4" type="video/mp4">
+          </video>
+          <span class="video-badge">Motion 03</span>
         </div>
-      </div>
-
-      <!-- Video Card 3 -->
-      <div class="group relative rounded-xl overflow-hidden glass-card cursor-pointer border border-white/10" onclick="openVideoModal('https://www.youtube-nocookie.com/embed/kJQP7kiw5Fk?autoplay=1', 'Episode III: Nocturnal Monochrome (Studio Edition)')">
-        <div class="relative aspect-[9/14] md:aspect-[4/5] overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=900&auto=format&fit=crop" alt="Studio Session" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 ease-out" />
-          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
-          
-          <div class="absolute inset-0 flex items-center justify-center">
-            <div class="w-14 h-14 rounded-full bg-black/60 border border-luxury-gold/50 flex items-center justify-center text-luxury-gold group-hover:scale-110 group-hover:bg-luxury-gold group-hover:text-black transition duration-300">
-              <i class="ph ph-play-fill text-xl ml-1"></i>
-            </div>
-          </div>
-
-          <div class="absolute bottom-6 left-6 right-6">
-            <span class="editorial-badge text-luxury-gold font-semibold">Editorial Reel · 00:54</span>
-            <h3 class="font-serif text-2xl text-white mt-1">Nocturnal Monochrome</h3>
-            <p class="text-neutral-400 text-xs mt-1">Night driving & anti-reflective coatings</p>
+        <div class="card-body">
+          <h3 class="product-name">Jenelle Celestia Shield</h3>
+          <p class="product-details">Contemporary bold geometric silhouette with anti-reflective treatment and scratch-resistant coating.</p>
+          <div class="product-footer">
+            <span class="product-price">₦110,000</span>
+            <button class="btn-add" onclick="addToBag('Jenelle Celestia Shield', 110000)">
+              <i data-lucide="plus" style="width:14px;height:14px;"></i> Add to Bag
+            </button>
           </div>
         </div>
       </div>
@@ -439,755 +608,118 @@
     </div>
   </section>
 
-  <!-- Craftsmanship & Engineering Section -->
-  <section id="craft" class="py-24 bg-[#0d0d0d] border-t border-luxury-border">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-luxury-gold font-light">Artisanal Mastery</span>
-          <h2 class="font-serif text-4xl sm:text-5xl font-light text-white leading-tight mt-2 mb-6">
-            Patience, Precision, and 200 Handcrafted Steps.
-          </h2>
-          <p class="text-neutral-400 text-sm md:text-base leading-relaxed mb-8 font-light">
-            Each pair of AURA Atelier frames undergoes an uncompromising 4-month manufacturing cycle in Sabae, Fukui. We reject fast injection molds in favor of hand-milled blocks of organic cellulose acetate cured for six months to eradicate distortion.
-          </p>
+  <!-- Cart Drawer Overlay -->
+  <div class="cart-overlay" id="cartOverlay"></div>
 
-          <!-- Craft Badges Grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
-            <div class="border-l border-luxury-gold/40 pl-4">
-              <h4 class="text-sm font-medium uppercase tracking-wider text-white">Pure Japanese Titanium</h4>
-              <p class="text-xs text-neutral-400 mt-1">Ultra-featherweight 14-gram frames with zero nickel allergy irritation.</p>
-            </div>
-            <div class="border-l border-luxury-gold/40 pl-4">
-              <h4 class="text-sm font-medium uppercase tracking-wider text-white">Diamond-Cut Bevels</h4>
-              <p class="text-xs text-neutral-400 mt-1">Micro-chamfered rim curves catch ambient sun angles seamlessly.</p>
-            </div>
-            <div class="border-l border-luxury-gold/40 pl-4">
-              <h4 class="text-sm font-medium uppercase tracking-wider text-white">Carl Zeiss™ Optics</h4>
-              <p class="text-xs text-neutral-400 mt-1">100% UV400 shield with oleophobic and hydrophobic nano-coatings.</p>
-            </div>
-            <div class="border-l border-luxury-gold/40 pl-4">
-              <h4 class="text-sm font-medium uppercase tracking-wider text-white">7-Barrel Custom Hinges</h4>
-              <p class="text-xs text-neutral-400 mt-1">Reinforced screw-lock architecture tested through 30,000 actuations.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Craft Graphic Visual -->
-        <div class="relative">
-          <div class="relative aspect-square sm:aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-white/10">
-            <img src="https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=1000&auto=format&fit=crop" alt="Handcrafted eyewear atelier" class="w-full h-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            
-            <div class="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-black/70 backdrop-blur-md border border-white/10 flex items-center justify-between">
-              <div>
-                <span class="text-[10px] tracking-widest uppercase text-luxury-gold">Sabae Workshop, Japan</span>
-                <p class="text-xs text-white">Master Polishers inspecting rim tolerances</p>
-              </div>
-              <span class="text-xl font-serif italic text-luxury-champagne">0.02 mm</span>
-            </div>
-          </div>
-        </div>
-      </div>
+  <!-- Cart Drawer -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3 class="cart-title">Your Bag</h3>
+      <button class="close-cart" id="closeCartBtn"><i data-lucide="x"></i></button>
     </div>
-  </section>
-
-  <!-- Lookbook & Editorial Grid -->
-  <section id="lookbook" class="py-24 px-6 md:px-12 max-w-7xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <span class="text-xs uppercase tracking-widest text-luxury-gold font-light">The Global Gazette</span>
-      <h2 class="font-serif text-4xl md:text-5xl font-light text-luxury-light mt-1">The Editorial Lookbook</h2>
-      <p class="text-neutral-400 text-sm mt-3 font-light">As captured in Paris, Tokyo, and New York fashion weeks.</p>
+    
+    <div class="cart-items" id="cartItemsList">
+      <!-- Injected by JavaScript -->
     </div>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="relative group overflow-hidden rounded-xl aspect-[3/4] bg-neutral-900">
-        <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop" alt="Editorial lookbook 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-          <span class="text-xs text-luxury-gold uppercase tracking-widest">Le Marais, Paris</span>
-          <p class="text-white text-sm font-serif">Aura Model: 09 Noir</p>
-        </div>
+    <div class="cart-footer">
+      <div class="cart-total-wrap">
+        <span>Total:</span>
+        <span class="product-price" id="cartTotalDisplay">₦0</span>
       </div>
-
-      <div class="relative group overflow-hidden rounded-xl aspect-[3/4] bg-neutral-900 md:translate-y-6">
-        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800&auto=format&fit=crop" alt="Editorial lookbook 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-          <span class="text-xs text-luxury-gold uppercase tracking-widest">Ginza, Tokyo</span>
-          <p class="text-white text-sm font-serif">Aura Model: Mirrored Oro</p>
-        </div>
-      </div>
-
-      <div class="relative group overflow-hidden rounded-xl aspect-[3/4] bg-neutral-900">
-        <img src="https://images.unsplash.com/photo-1509695503492-413833d296ae?q=80&w=800&auto=format&fit=crop" alt="Editorial lookbook 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-          <span class="text-xs text-luxury-gold uppercase tracking-widest">SoHo, New York</span>
-          <p class="text-white text-sm font-serif">Aura Model: Architect Acetate</p>
-        </div>
-      </div>
-
-      <div class="relative group overflow-hidden rounded-xl aspect-[3/4] bg-neutral-900 md:translate-y-6">
-        <img src="https://images.unsplash.com/photo-1582142839970-2b9da4e532b2?q=80&w=800&auto=format&fit=crop" alt="Editorial lookbook 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-          <span class="text-xs text-luxury-gold uppercase tracking-widest">Navigli, Milan</span>
-          <p class="text-white text-sm font-serif">Aura Model: Amber Cat-Eye</p>
-        </div>
-      </div>
+      <button class="btn-gold" style="width: 100%; justify-content: center;" onclick="handleCheckout()">
+        Proceed to Checkout
+      </button>
     </div>
-  </section>
+  </div>
 
-  <!-- Press & Client Testimonials -->
-  <section class="py-20 bg-luxury-dark border-y border-luxury-border">
-    <div class="max-w-6xl mx-auto px-6 text-center">
-      
-      <!-- Media Quotes Carousel -->
-      <div id="quote-slider" class="relative min-h-[140px] flex items-center justify-center">
-        <div class="quote-slide transition-opacity duration-500">
-          <i class="ph ph-quotes text-3xl text-luxury-gold/50 mb-3 inline-block"></i>
-          <p class="font-serif text-2xl md:text-3xl font-light italic max-w-3xl mx-auto text-neutral-200">
-            "AURA Atelier proves that eyewear is no longer an accessory, but the definitive centerpiece of personal silhouette couture."
-          </p>
-          <span class="block mt-4 text-xs tracking-widest uppercase text-luxury-gold font-medium">— VOGUE INTERNATIONAL HAUTE JOAILLERIE & LUNETTERIE</span>
-        </div>
-      </div>
-
-      <!-- Press Logos -->
-      <div class="mt-14 pt-10 border-t border-white/5 flex flex-wrap items-center justify-center gap-10 md:gap-16 opacity-40 text-sm tracking-widest uppercase font-serif">
-        <span>VOGUE</span>
-        <span>GQ EDITORIAL</span>
-        <span>HARPER'S BAZAAR</span>
-        <span>ELLE ATELIER</span>
-        <span>MONOCLE</span>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- VIP Private Drops & Newsletter -->
-  <section id="contact" class="py-24 px-6 max-w-4xl mx-auto text-center">
-    <div class="glass-card rounded-2xl p-8 md:p-14 border border-white/10 relative overflow-hidden">
-      <div class="absolute -right-20 -top-20 w-48 h-48 bg-luxury-gold/10 rounded-full blur-3xl pointer-events-none"></div>
-      
-      <span class="text-xs uppercase tracking-widest text-luxury-gold font-light">The Private Salon</span>
-      <h2 class="font-serif text-3xl md:text-5xl font-light mt-2 mb-4">Reserve Upcoming Numbered Drops</h2>
-      <p class="text-neutral-400 text-sm max-w-lg mx-auto mb-8 font-light">
-        Receive invitation-only links to limited 50-piece capsule batches, runway archives, and private trunk show fittings.
-      </p>
-
-      <form id="newsletter-form" onsubmit="handleNewsletterSubmit(event)" class="max-w-md mx-auto flex flex-col sm:flex-row gap-2">
-        <input 
-          type="email" 
-          id="newsletter-email"
-          required 
-          placeholder="Enter your private email" 
-          class="bg-black/60 border border-neutral-700 focus:border-luxury-gold px-4 py-3 text-xs tracking-wider text-white placeholder-neutral-500 rounded-sm focus:outline-none flex-grow"
-        />
-        <button type="submit" class="bg-luxury-gold text-black text-xs uppercase tracking-widest font-semibold px-6 py-3 rounded-sm hover:bg-white transition-colors duration-200">
-          Join Salon
-        </button>
-      </form>
-      <div id="newsletter-msg" class="text-xs text-luxury-gold mt-3 hidden">
-        Welcome to the circle. A confirmation letter has been dispatched.
-      </div>
-    </div>
-  </section>
-
-  <!-- Luxury Footer -->
-  <footer class="bg-black border-t border-luxury-border py-16 px-6 md:px-12 text-neutral-400 text-xs font-light">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-10">
-      
-      <!-- Brand column -->
-      <div class="md:col-span-2">
-        <span class="font-serif text-2xl tracking-[0.3em] uppercase text-white block mb-2">AURA</span>
-        <span class="text-[9px] tracking-ultra text-luxury-gold uppercase block mb-4">ATELIER PARIS · SABAE · MILANO</span>
-        <p class="text-neutral-500 text-xs leading-relaxed max-w-sm">
-          A luxury lunetterie laboratory committed to architectural geometry, rare Japanese raw components, and uncompromised ocular protection.
-        </p>
-      </div>
-
-      <!-- Navigation -->
-      <div>
-        <h5 class="text-white text-xs uppercase tracking-widest font-medium mb-4">Collections</h5>
-        <ul class="space-y-2">
-          <li><a href="#collection" class="hover:text-luxury-gold transition">Solar Haute Couture</a></li>
-          <li><a href="#collection" class="hover:text-luxury-gold transition">Optique Atelier</a></li>
-          <li><a href="#collection" class="hover:text-luxury-gold transition">Titanium Raw Series</a></li>
-          <li><a href="#collection" class="hover:text-luxury-gold transition">Archive Editions</a></li>
-        </ul>
-      </div>
-
-      <!-- Concierge -->
-      <div>
-        <h5 class="text-white text-xs uppercase tracking-widest font-medium mb-4">Concierge</h5>
-        <ul class="space-y-2">
-          <li><a href="#" onclick="openMessageBox('Virtual Stylist Appointment', 'Our Paris flagship stylist desk will contact you via email for a live 1-on-1 virtual fitting session.'); return false;" class="hover:text-luxury-gold transition">Book Virtual Fitting</a></li>
-          <li><a href="#" onclick="openMessageBox('Prescription Guide', 'Upload your doctor prescription card during checkout or email rx@auraatelier.com.'); return false;" class="hover:text-luxury-gold transition">Prescription Lenses</a></li>
-          <li><a href="#" onclick="openMessageBox('Care & Polish', 'All AURA frames carry a lifetime re-polishing and ultrasonic cleaning warranty.'); return false;" class="hover:text-luxury-gold transition">Care & Lifetime Polish</a></li>
-          <li><a href="#" onclick="openMessageBox('Global Courier', 'Complimentary insured DHL Express courier with discreet signature-required delivery.'); return false;" class="hover:text-luxury-gold transition">Complimentary Shipping</a></li>
-        </ul>
-      </div>
-
-      <!-- Social and Flags -->
-      <div>
-        <h5 class="text-white text-xs uppercase tracking-widest font-medium mb-4">Connect</h5>
-        <div class="flex space-x-4 text-lg text-neutral-300 mb-6">
-          <a href="#" class="hover:text-luxury-gold transition"><i class="ph ph-instagram-logo"></i></a>
-          <a href="#" class="hover:text-luxury-gold transition"><i class="ph ph-tiktok-logo"></i></a>
-          <a href="#" class="hover:text-luxury-gold transition"><i class="ph ph-youtube-logo"></i></a>
-          <a href="#" class="hover:text-luxury-gold transition"><i class="ph ph-pinterest-logo"></i></a>
-        </div>
-        <p class="text-[10px] text-neutral-500 uppercase tracking-widest">FLAGSHIP: 28 RUE DU FAUBOURG SAINT-HONORÉ, PARIS</p>
-      </div>
-
-    </div>
-
-    <div class="max-w-7xl mx-auto border-t border-neutral-900 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center text-[11px] text-neutral-600">
-      <p>© 2026 AURA ATELIER INC. ALL RIGHTS RESERVED.</p>
-      <div class="flex space-x-6 mt-4 sm:mt-0">
-        <a href="#" class="hover:text-neutral-400 transition">Privacy Protocol</a>
-        <a href="#" class="hover:text-neutral-400 transition">Terms of Sale</a>
-        <a href="#" class="hover:text-neutral-400 transition">Authenticity Hologram</a>
-      </div>
-    </div>
+  <!-- Footer -->
+  <footer id="contact">
+    <img src="Logo.jpeg" alt="Jenelle" class="footer-logo" onerror="this.style.display='none'" />
+    <p style="font-family: var(--font-serif); font-size: 1.4rem; color: #fff; margin-bottom: 8px;">JENELLE</p>
+    <p>© 2026 Jenelle Eyewear. All rights reserved.</p>
   </footer>
 
-  <!-- Shopping Bag Sidebar Drawer -->
-  <div id="bag-drawer" class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0">
-    <!-- Backdrop -->
-    <div id="bag-backdrop" class="absolute inset-0 bg-black/70 backdrop-blur-sm pointer-events-auto"></div>
-    
-    <!-- Drawer Panel -->
-    <div id="bag-panel" class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-luxury-dark border-l border-luxury-border p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300 pointer-events-auto">
-      <div>
-        <div class="flex items-center justify-between pb-6 border-b border-luxury-border">
-          <div class="flex items-center gap-2">
-            <i class="ph ph-handbag text-xl text-luxury-gold"></i>
-            <h3 class="text-sm font-medium tracking-widest uppercase text-white">Your Atelier Selection</h3>
-          </div>
-          <button id="close-bag" class="text-neutral-400 hover:text-white text-xl">
-            <i class="ph ph-x"></i>
-          </button>
-        </div>
-
-        <!-- Items List Container -->
-        <div id="bag-items-container" class="mt-6 space-y-4 max-h-[60vh] overflow-y-auto pr-2">
-          <!-- Populated by JS -->
-          <p id="empty-bag-msg" class="text-neutral-500 text-xs text-center py-12">Your selection bag is currently empty.</p>
-        </div>
-      </div>
-
-      <div class="pt-6 border-t border-luxury-border">
-        <div class="flex justify-between items-center text-xs uppercase tracking-widest text-neutral-400 mb-2">
-          <span>Subtotal</span>
-          <span id="bag-total-price" class="text-white font-medium">$0</span>
-        </div>
-        <p class="text-[10px] text-neutral-500 mb-4">Taxes and worldwide insured courier calculated at checkout.</p>
-        
-        <button onclick="handleCheckout()" class="w-full py-3.5 bg-luxury-gold text-black text-xs font-semibold uppercase tracking-widest hover:bg-white transition-colors duration-200 rounded-sm">
-          Proceed to Checkout
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- Quick View Product Modal -->
-  <div id="product-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
-    <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="closeProductModal()"></div>
-    <div class="relative glass-modal w-full max-w-3xl rounded-2xl p-6 md:p-8 max-h-[90vh] overflow-y-auto border border-white/10 z-10">
-      <button onclick="closeProductModal()" class="absolute top-6 right-6 text-neutral-400 hover:text-white text-2xl">
-        <i class="ph ph-x"></i>
-      </button>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div class="relative aspect-square rounded-xl overflow-hidden bg-black">
-          <img id="modal-img" src="" alt="Glasses preview" class="w-full h-full object-cover" />
-          <div id="modal-badge" class="absolute top-4 left-4 bg-luxury-gold text-black text-[10px] font-bold uppercase tracking-widest px-2.5 py-1 rounded">
-            Limited
-          </div>
-        </div>
-
-        <div>
-          <span id="modal-category" class="text-xs uppercase tracking-widest text-luxury-gold font-light">Sun Couture</span>
-          <h3 id="modal-title" class="font-serif text-3xl font-light text-white mt-1">The Monolith 01</h3>
-          <p id="modal-price" class="text-luxury-champagne text-lg font-light mt-1">$580 USD</p>
-          
-          <p id="modal-desc" class="text-neutral-400 text-xs leading-relaxed my-4 font-light">
-            Engineered with custom milled 10mm Japanese bio-acetate, 7-barrel hinges, and Carl Zeiss UV400 grey gradient lenses.
-          </p>
-
-          <!-- Swatches preview in modal -->
-          <div class="mb-6">
-            <span class="text-[11px] uppercase tracking-widest text-neutral-400 block mb-2">Select Acetate Colorway:</span>
-            <div id="modal-swatches" class="flex space-x-3"></div>
-          </div>
-
-          <div class="flex gap-3">
-            <button id="modal-add-btn" class="flex-grow py-3.5 bg-luxury-gold text-black uppercase tracking-widest text-xs font-semibold rounded hover:bg-white transition">
-              Add to Bag
-            </button>
-            <button onclick="copyProductLink()" class="p-3 border border-neutral-700 hover:border-luxury-gold text-neutral-300 hover:text-luxury-gold rounded" title="Copy reference link">
-              <i class="ph ph-share-network text-lg"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Campaign Cinema Video Modal -->
-  <div id="video-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
-    <div class="absolute inset-0 bg-black/90 backdrop-blur-lg" onclick="closeVideoModal()"></div>
-    <div class="relative w-full max-w-4xl bg-black rounded-2xl overflow-hidden border border-white/20 shadow-2xl z-10">
-      
-      <div class="flex justify-between items-center p-4 bg-luxury-dark border-b border-white/10">
-        <h4 id="video-modal-title" class="text-xs tracking-widest uppercase text-white font-medium">Campaign Film</h4>
-        <button onclick="closeVideoModal()" class="text-neutral-400 hover:text-white text-xl">
-          <i class="ph ph-x"></i>
-        </button>
-      </div>
-
-      <div class="relative aspect-video w-full bg-black">
-        <iframe id="video-frame" class="w-full h-full" src="" title="Campaign Video Player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-
-  <!-- Custom Elegant Message Box Modal (Replaces alert) -->
-  <div id="message-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
-    <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeMessageBox()"></div>
-    <div class="relative glass-modal max-w-sm w-full p-6 rounded-xl text-center z-10 border border-luxury-gold/40">
-      <div class="w-12 h-12 rounded-full bg-luxury-gold/10 text-luxury-gold mx-auto flex items-center justify-center text-2xl mb-4">
-        <i class="ph ph-sparkle"></i>
-      </div>
-      <h4 id="msg-title" class="font-serif text-xl text-white">Atelier Notification</h4>
-      <p id="msg-body" class="text-neutral-400 text-xs mt-2 leading-relaxed font-light"></p>
-      <button onclick="closeMessageBox()" class="mt-6 px-6 py-2.5 bg-luxury-gold text-black text-xs uppercase tracking-widest font-semibold rounded hover:bg-white transition">
-        Understood
-      </button>
-    </div>
-  </div>
-
   <script>
-    // ==========================================
-    // Product Catalog Database
-    // ==========================================
-    const products = [
-      {
-        id: "aura-01",
-        name: "The Monolith Oblong",
-        category: "sunglasses",
-        categoryLabel: "Sun Couture",
-        price: 540,
-        badge: "Capsule Drop",
-        description: "Beveled block acetate with heavy rectangular proportions. Fitted with Zeiss dark smoke category 3 lenses.",
-        image: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800&auto=format&fit=crop",
-        colors: ["#111111", "#4A3728", "#E6D5B8"]
-      },
-      {
-        id: "aura-02",
-        name: "Nocturne Titanium Aviator",
-        category: "unisex",
-        categoryLabel: "Limited Run",
-        price: 680,
-        badge: "Numbered Edition",
-        description: "Featherlight grade-9 Japanese titanium frame featuring micro-engraved crosshatch pattern and champagne gold tint.",
-        image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=800&auto=format&fit=crop",
-        colors: ["#D4AF37", "#8E8E93", "#111111"]
-      },
-      {
-        id: "aura-03",
-        name: "Verona Minimalist Round",
-        category: "optical",
-        categoryLabel: "Optical Precision",
-        price: 490,
-        badge: "Atelier Classic",
-        description: "Engineered for daily intellectual presence. Diamond-turned round eyewire with silicone hypoallergenic nose pads.",
-        image: "https://images.unsplash.com/photo-1591076482161-42ce6da69f67?q=80&w=800&auto=format&fit=crop",
-        colors: ["#8E8E93", "#D4AF37", "#3B2F2F"]
-      },
-      {
-        id: "aura-04",
-        name: "Séraphine Sculpted Cat-Eye",
-        category: "sunglasses",
-        categoryLabel: "Sun Couture",
-        price: 610,
-        badge: "Runway Favorite",
-        description: "Dramatic upturned temple corners inspired by vintage 1960s Rome cinema, re-imagined with 3D edge milling.",
-        image: "https://images.unsplash.com/photo-1508296695146-257a814070b4?q=80&w=800&auto=format&fit=crop",
-        colors: ["#4A3728", "#111111", "#800020"]
-      },
-      {
-        id: "aura-05",
-        name: "Kurogane Pure Wire",
-        category: "limited",
-        categoryLabel: "Limited Run",
-        price: 820,
-        badge: "50 Pieces Worldwide",
-        description: "Hand-hammered rim wire with Damascus steel grain detailing. Each piece carries a laser-etched serial hallmark.",
-        image: "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=800&auto=format&fit=crop",
-        colors: ["#2b2b2b", "#D4AF37"]
-      },
-      {
-        id: "aura-06",
-        name: "Palais Optical Hexagon",
-        category: "optical",
-        categoryLabel: "Optical Precision",
-        price: 510,
-        badge: "Architect Series",
-        description: "Geometric angular top rim counterbalanced by soft curved lower profile. Blue-light filtering AR lenses included.",
-        image: "https://images.unsplash.com/photo-1577803645773-f96470509666?q=80&w=800&auto=format&fit=crop",
-        colors: ["#D4AF37", "#111111", "#6E7F80"]
-      },
-      {
-        id: "aura-07",
-        name: "Solstice Wrap Shield",
-        category: "sunglasses",
-        categoryLabel: "Sun Couture",
-        price: 630,
-        badge: "High Aerodynamics",
-        description: "Futuristic mono-lens curve providing panoramic field of view with iridescent chromatic mirrored finish.",
-        image: "https://images.unsplash.com/photo-1509695503492-413833d296ae?q=80&w=800&auto=format&fit=crop",
-        colors: ["#111111", "#1E3A8A"]
-      },
-      {
-        id: "aura-08",
-        name: "L'Ermitage Tortoise Square",
-        category: "limited",
-        categoryLabel: "Limited Run",
-        price: 570,
-        badge: "Cellulose Acetate",
-        description: "Warm amber and honey tortoise shell patterns cured in wooden casks to retain natural tactile luster.",
-        image: "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop",
-        colors: ["#543d2b", "#111111"]
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Cart Management
+    let cart = [];
+    const bagCount = document.getElementById('bagCount');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartItemsList = document.getElementById('cartItemsList');
+    const cartTotalDisplay = document.getElementById('cartTotalDisplay');
+
+    function toggleCart(open) {
+      if (open) {
+        cartDrawer.classList.add('active');
+        cartOverlay.classList.add('active');
+      } else {
+        cartDrawer.classList.remove('active');
+        cartOverlay.classList.remove('active');
       }
-    ];
-
-    // State Variables
-    let currentCategory = 'all';
-    let bag = [];
-    let activeQuickProduct = null;
-
-    // Render Products
-    function renderProducts(category = 'all') {
-      const grid = document.getElementById('products-grid');
-      grid.innerHTML = '';
-
-      const filtered = category === 'all' 
-        ? products 
-        : products.filter(p => p.category === category || (category === 'limited' && p.category === 'limited'));
-
-      filtered.forEach(product => {
-        const card = document.createElement('div');
-        card.className = "group glass-card rounded-xl overflow-hidden flex flex-col justify-between border border-white/5 hover:border-luxury-gold/50 transition-all duration-500";
-        
-        card.innerHTML = `
-          <div class="relative aspect-square overflow-hidden bg-neutral-900 cursor-pointer" onclick="openProductModal('${product.id}')">
-            <img 
-              src="${product.image}" 
-              alt="${product.name}" 
-              onerror="this.src='https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800&auto=format&fit=crop'"
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" 
-            />
-            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
-            <span class="absolute top-3 left-3 bg-black/70 backdrop-blur-md border border-white/10 text-[9px] uppercase tracking-widest text-luxury-gold px-2 py-1 rounded">
-              ${product.badge}
-            </span>
-            <button class="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-black/80 backdrop-blur-md text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-luxury-gold hover:text-black">
-              <i class="ph ph-arrows-out-simple text-sm"></i>
-            </button>
-          </div>
-
-          <div class="p-5 flex flex-col justify-between flex-grow">
-            <div>
-              <span class="text-[10px] uppercase tracking-widest text-neutral-500 font-light">${product.categoryLabel}</span>
-              <h3 class="font-serif text-lg font-light text-white group-hover:text-luxury-champagne transition-colors mt-0.5">${product.name}</h3>
-              <p class="text-xs text-luxury-gold mt-1 font-light">$${product.price} USD</p>
-            </div>
-
-            <!-- Color Swatches Preview -->
-            <div class="flex items-center justify-between mt-4 pt-4 border-t border-white/5">
-              <div class="flex space-x-1.5">
-                ${product.colors.map(color => `
-                  <span class="w-3 h-3 rounded-full border border-white/30" style="background-color: ${color}"></span>
-                `).join('')}
-              </div>
-
-              <button onclick="addToBag('${product.id}')" class="text-xs tracking-widest uppercase text-neutral-300 hover:text-luxury-gold flex items-center gap-1 font-medium transition">
-                <span>Acquire</span>
-                <i class="ph ph-arrow-right"></i>
-              </button>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
     }
 
-    // Filter Button Clicks
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => {
-          b.classList.remove('bg-luxury-gold', 'text-black', 'border-luxury-gold');
-          b.classList.add('border-neutral-800', 'text-neutral-400');
-        });
-        btn.classList.remove('border-neutral-800', 'text-neutral-400');
-        btn.classList.add('bg-luxury-gold', 'text-black', 'border-luxury-gold');
+    document.getElementById('openBagBtn').addEventListener('click', () => toggleCart(true));
+    document.getElementById('closeCartBtn').addEventListener('click', () => toggleCart(false));
+    cartOverlay.addEventListener('click', () => toggleCart(false));
 
-        const cat = btn.getAttribute('data-category');
-        renderProducts(cat);
-      });
-    });
-
-    // Shopping Bag Operations
-    function addToBag(productId) {
-      const item = products.find(p => p.id === productId);
-      if (!item) return;
-
-      bag.push(item);
-      updateBagUI();
-      openBag();
+    function formatNaira(amount) {
+      return '₦' + amount.toLocaleString('en-NG');
     }
 
-    function removeFromBag(index) {
-      bag.splice(index, 1);
-      updateBagUI();
+    function addToBag(title, price) {
+      cart.push({ title, price, id: Date.now() });
+      renderCart();
+      toggleCart(true);
     }
 
-    function updateBagUI() {
-      const countBadge = document.getElementById('bag-count');
-      const itemsList = document.getElementById('bag-items-container');
-      const totalPrice = document.getElementById('bag-total-price');
+    function removeFromBag(id) {
+      cart = cart.filter(item => item.id !== id);
+      renderCart();
+    }
 
-      countBadge.textContent = bag.length;
-
-      if (bag.length === 0) {
-        itemsList.innerHTML = '<p class="text-neutral-500 text-xs text-center py-12">Your selection bag is currently empty.</p>';
-        totalPrice.textContent = '$0 USD';
+    function renderCart() {
+      bagCount.textContent = cart.length;
+      
+      if (cart.length === 0) {
+        cartItemsList.innerHTML = `<p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-top: 40px;">Your shopping bag is empty.</p>`;
+        cartTotalDisplay.textContent = '₦0';
         return;
       }
 
       let total = 0;
-      itemsList.innerHTML = '';
-      bag.forEach((product, idx) => {
-        total += product.price;
-        const row = document.createElement('div');
-        row.className = "flex items-center justify-between gap-4 p-3 bg-white/5 rounded-lg border border-white/5";
-        row.innerHTML = `
-          <img src="${product.image}" class="w-12 h-12 rounded object-cover" />
-          <div class="flex-grow">
-            <h5 class="text-xs font-serif text-white">${product.name}</h5>
-            <span class="text-[10px] text-luxury-gold">$${product.price} USD</span>
+      cartItemsList.innerHTML = cart.map(item => {
+        total += item.price;
+        return `
+          <div class="cart-item">
+            <div>
+              <div class="cart-item-title">${item.title}</div>
+              <div class="cart-item-price">${formatNaira(item.price)}</div>
+            </div>
+            <button class="cart-remove" onclick="removeFromBag(${item.id})">Remove</button>
           </div>
-          <button onclick="removeFromBag(${idx})" class="text-neutral-500 hover:text-red-400 text-base">
-            <i class="ph ph-trash"></i>
-          </button>
         `;
-        itemsList.appendChild(row);
-      });
+      }).join('');
 
-      totalPrice.textContent = `$${total} USD`;
+      cartTotalDisplay.textContent = formatNaira(total);
     }
-
-    function openBag() {
-      const drawer = document.getElementById('bag-drawer');
-      const panel = document.getElementById('bag-panel');
-      drawer.classList.remove('opacity-0', 'pointer-events-none');
-      drawer.classList.add('opacity-100');
-      panel.classList.remove('translate-x-full');
-    }
-
-    function closeBag() {
-      const drawer = document.getElementById('bag-drawer');
-      const panel = document.getElementById('bag-panel');
-      drawer.classList.add('opacity-0', 'pointer-events-none');
-      drawer.classList.remove('opacity-100');
-      panel.classList.add('translate-x-full');
-    }
-
-    document.getElementById('bag-btn').addEventListener('click', openBag);
-    document.getElementById('close-bag').addEventListener('click', closeBag);
-    document.getElementById('bag-backdrop').addEventListener('click', closeBag);
 
     function handleCheckout() {
-      if (bag.length === 0) {
-        openMessageBox('Empty Bag', 'Kindly select a handcrafted frame before requesting courier dispatch.');
+      if (cart.length === 0) {
+        alert('Your bag is currently empty.');
         return;
       }
-      closeBag();
-      openMessageBox('Reservation Initiated', `Your order reservation for ${bag.length} bespoke frames has been reserved. Our VIP concierge will verify pupil distances and payment methods with you.`);
-      bag = [];
-      updateBagUI();
+      alert('Order initiated! Seamless Naira checkout integration can be connected via Paystack or Flutterwave.');
     }
 
-    // Quick View Modal
-    function openProductModal(productId) {
-      const prod = products.find(p => p.id === productId);
-      if (!prod) return;
-      activeQuickProduct = prod;
-
-      document.getElementById('modal-img').src = prod.image;
-      document.getElementById('modal-title').textContent = prod.name;
-      document.getElementById('modal-category').textContent = prod.categoryLabel;
-      document.getElementById('modal-price').textContent = `$${prod.price} USD`;
-      document.getElementById('modal-desc').textContent = prod.description;
-      document.getElementById('modal-badge').textContent = prod.badge;
-
-      // Swatches in modal
-      const swatches = document.getElementById('modal-swatches');
-      swatches.innerHTML = prod.colors.map((c, i) => `
-        <button class="w-6 h-6 rounded-full border-2 ${i === 0 ? 'border-luxury-gold' : 'border-neutral-600'} hover:scale-110 transition" style="background-color: ${c}"></button>
-      `).join('');
-
-      const addBtn = document.getElementById('modal-add-btn');
-      addBtn.onclick = () => {
-        addToBag(prod.id);
-        closeProductModal();
-      };
-
-      document.getElementById('product-modal').classList.remove('hidden');
-    }
-
-    function closeProductModal() {
-      document.getElementById('product-modal').classList.add('hidden');
-      activeQuickProduct = null;
-    }
-
-    // Video Player Modal
-    function openVideoModal(videoSrc, title) {
-      document.getElementById('video-modal-title').textContent = title;
-      document.getElementById('video-frame').src = videoSrc;
-      document.getElementById('video-modal').classList.remove('hidden');
-    }
-
-    function closeVideoModal() {
-      document.getElementById('video-frame').src = '';
-      document.getElementById('video-modal').classList.add('hidden');
-    }
-
-    // Replacement for alert() dialog
-    function openMessageBox(title, message) {
-      document.getElementById('msg-title').textContent = title;
-      document.getElementById('msg-body').textContent = message;
-      document.getElementById('message-modal').classList.remove('hidden');
-    }
-
-    function closeMessageBox() {
-      document.getElementById('message-modal').classList.add('hidden');
-    }
-
-    // Clipboard Copy Helper (Safe for iFrames)
-    function copyProductLink() {
-      if (!activeQuickProduct) return;
-      const text = `${window.location.origin}#ref=${activeQuickProduct.id}`;
-      const dummy = document.createElement("input");
-      document.body.appendChild(dummy);
-      dummy.value = text;
-      dummy.select();
-      document.execCommand("copy");
-      document.body.removeChild(dummy);
-      openMessageBox("Editorial Reference Copied", `Direct archive link for "${activeQuickProduct.name}" copied to your clipboard.`);
-    }
-
-    // Virtual Try-On Logic & Vector Morphing
-    let currentGlassesStyle = 'aviator';
-
-    function setFaceShape(shape, label, imageUrl) {
-      document.getElementById('face-model-img').src = imageUrl;
-      document.getElementById('active-silhouette-label').textContent = `Archetype: ${label}`;
-
-      document.querySelectorAll('.shape-btn').forEach(btn => {
-        btn.classList.remove('border-luxury-gold', 'bg-luxury-gold/10', 'text-neutral-200');
-        btn.classList.add('border-neutral-800', 'text-neutral-400');
+    // Unmute on click if preferred
+    document.querySelectorAll('video').forEach(video => {
+      video.addEventListener('click', () => {
+        video.muted = !video.muted;
       });
-      event.currentTarget.classList.remove('border-neutral-800', 'text-neutral-400');
-      event.currentTarget.classList.add('border-luxury-gold', 'bg-luxury-gold/10', 'text-neutral-200');
-    }
-
-    function setGlassesStyle(styleKey, styleTitle) {
-      currentGlassesStyle = styleKey;
-      const leftLens = document.getElementById('svg-lens-left');
-      const rightLens = document.getElementById('svg-lens-right');
-      const bridge = document.getElementById('svg-frame-bridge');
-
-      if (styleKey === 'aviator') {
-        bridge.setAttribute('d', 'M105,38 Q120,28 135,38');
-        leftLens.setAttribute('d', 'M35,28 C50,20 95,20 105,38 C115,55 90,75 48,68 C25,64 20,40 35,28 Z');
-        rightLens.setAttribute('d', 'M205,28 C190,20 145,20 135,38 C125,55 150,75 192,68 C215,64 220,40 205,28 Z');
-      } else if (styleKey === 'geometric') {
-        bridge.setAttribute('d', 'M105,35 L135,35');
-        leftLens.setAttribute('d', 'M30,30 L105,30 L100,60 L35,60 Z');
-        rightLens.setAttribute('d', 'M135,30 L210,30 L205,60 L140,60 Z');
-      } else if (styleKey === 'round') {
-        bridge.setAttribute('d', 'M105,42 Q120,32 135,42');
-        leftLens.setAttribute('d', 'M70,45 m -35,0 a 35,35 0 1,0 70,0 a 35,35 0 1,0 -70,0');
-        rightLens.setAttribute('d', 'M170,45 m -35,0 a 35,35 0 1,0 70,0 a 35,35 0 1,0 -70,0');
-      } else if (styleKey === 'cateye') {
-        bridge.setAttribute('d', 'M105,36 Q120,26 135,36');
-        leftLens.setAttribute('d', 'M20,24 C50,15 95,28 105,38 C110,60 85,68 45,64 C25,60 15,35 20,24 Z');
-        rightLens.setAttribute('d', 'M220,24 C190,15 145,28 135,38 C130,60 155,68 195,64 C215,60 225,35 220,24 Z');
-      }
-
-      // Update button highlights
-      document.querySelectorAll('.style-select-btn').forEach(btn => {
-        btn.classList.remove('border-luxury-gold', 'bg-white/5');
-        btn.classList.add('border-neutral-800');
-        const icon = btn.querySelector('.ph');
-        if (icon) {
-          icon.className = 'ph ph-circle text-neutral-600 text-lg';
-        }
-      });
-      event.currentTarget.classList.remove('border-neutral-800');
-      event.currentTarget.classList.add('border-luxury-gold', 'bg-white/5');
-      const activeIcon = event.currentTarget.querySelector('.ph');
-      if (activeIcon) {
-        activeIcon.className = 'ph ph-check-circle text-luxury-gold text-lg';
-      }
-    }
-
-    function setLensTint(frameColor, lensTint) {
-      const svg = document.getElementById('glasses-svg');
-      svg.style.color = frameColor;
-      document.getElementById('svg-lens-left').setAttribute('fill', lensTint);
-      document.getElementById('svg-lens-right').setAttribute('fill', lensTint);
-    }
-
-    function inquireActiveStyle() {
-      openMessageBox('Bespoke Style Selected', `We have logged your preferred silhouette (${currentGlassesStyle.toUpperCase()}) for your private fitting appointment. Our master lunetier will inspect cheekbone elevation and nose-bridge width.`);
-    }
-
-    // Newsletter Submission Handler
-    function handleNewsletterSubmit(e) {
-      e.preventDefault();
-      const email = document.getElementById('newsletter-email').value;
-      if (!email) return;
-      document.getElementById('newsletter-form').reset();
-      const msg = document.getElementById('newsletter-msg');
-      msg.classList.remove('hidden');
-      setTimeout(() => {
-        msg.classList.add('hidden');
-      }, 5000);
-    }
-
-    // Mobile Navigation Drawer Toggle
-    const mobileBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    mobileBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    document.querySelectorAll('.mobile-nav-link').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-
-    // Search Prompt
-    document.getElementById('search-trigger').addEventListener('click', () => {
-      openMessageBox('Archive Search', 'Type collection keywords like "Titanium", "Gold", or "Optical" on our filters to discover bespoke frames.');
-    });
-
-    // Initialize Page Content on Load
-    window.addEventListener('DOMContentLoaded', () => {
-      renderProducts('all');
     });
   </script>
 </body>
